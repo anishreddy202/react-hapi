@@ -31,9 +31,24 @@ var server = new Hapi.Server()
 
 // add server’s connection information
 server.connection({
-  host: 'localhost',
-  port: 3000
-})
+  host: process.env.HOST || 'localhost',
+  port: 3000,
+  routes:{
+    cors: true
+  }
+});
+
+
+// server.route({
+//   method:'GET',
+//   path:'/',
+//   handler:function(request, response) {
+//     response('I am working')
+//   }
+// })
+//   server.start(function(err) {
+//     console.log('Server started at: ' + server.info.uri)
+//   })
 
 server.register({
   register: require('inert')
@@ -44,6 +59,7 @@ server.register({
     method: 'GET',
     path: '/',
     handler: function(request, reply){
+      console.log('I am here');
       // reply.file() expects the file path as parameter
       reply.file('./client/index.html')
     }
