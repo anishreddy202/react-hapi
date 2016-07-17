@@ -63,7 +63,18 @@ server.register({
       // reply.file() expects the file path as parameter
       reply.file('./client/index.html')
     }
-  })
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/js/{path}',
+    handler: function(request, reply){
+      console.log('I am here file');
+      // reply.file() expects the file path as parameter
+      reply.file('./client/js/' + request.params.path);
+    }
+  });
+
   server.start(function(err) {
     console.log('Server started at: ' + server.info.uri)
   })
