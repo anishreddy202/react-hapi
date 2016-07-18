@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/index.js",
     "docker": "docker build -t madhi/react:latest .",
-    "docker:start":"npm run docker && docker run -p 3200:3000 madhi/react"
+    "docker:start": "npm run docker && docker run -p 3200:3000 madhi/react"
   },
   "author": "",
   "license": "ISC",

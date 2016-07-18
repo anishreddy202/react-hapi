@@ -59,8 +59,6 @@ server.register({
     method: 'GET',
     path: '/',
     handler: function(request, reply){
-      console.log('I am here');
-      // reply.file() expects the file path as parameter
       reply.file('./client/index.html')
     }
   });
@@ -69,9 +67,15 @@ server.register({
     method: 'GET',
     path: '/js/{path}',
     handler: function(request, reply){
-      console.log('I am here file');
-      // reply.file() expects the file path as parameter
       reply.file('./client/js/' + request.params.path);
+    }
+  });
+
+  server.route({
+    method: 'GET',
+    path: '/styles/{path}',
+    handler: function(request, reply){
+      reply.file('./client/styles/' + request.params.path);
     }
   });
 
